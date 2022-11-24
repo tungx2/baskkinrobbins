@@ -321,7 +321,6 @@
   .fs_wrap input{
 		width: 60%;
     height: 2rem;
-    width: 135px;
     border: none;
     border-radius: 10px;
     box-shadow: 2px 2px 0px;
@@ -331,7 +330,7 @@
     right: 60px;
   }
   .fs_wrap p{
-    width: fit-content;
+    width: 60%;
     text-align: center;
     font-size: 1rem;
     position: absolute;
