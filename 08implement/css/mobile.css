@@ -1,8 +1,8 @@
 @charset "utf-8";
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:768px) {
 
-  i.fa-question-circle{display: none;}
+  i.fa-question-circle,.sns_lnb,.pc_slide{display: none;}
   /* 헤더 */
   header{}
   .h_inner{

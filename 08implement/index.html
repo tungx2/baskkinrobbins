@@ -48,7 +48,7 @@
 
 
       <!-- sns lnb -->
-      <!-- <nav class="sns_lnb">
+      <nav class="sns_lnb">
         <ul>
           <li><a href="https://twitter.com/baskinrobbinskr" title="배스킨라빈스 트위터"><img src="../01basic_data/header/icon_twitter.png" alt="트위터 로고"></a></li>
           <li><a href="https://www.youtube.com/channel/UCdUlCaxi7gx9Q-WDVDe30YA" title="배스킨라빈스 유튜브"><img src="../01basic_data/header/icon_youtube.png" alt="유튜브 로고"></a></li>
@@ -56,12 +56,12 @@
           <li><a href="https://ko-kr.facebook.com/baskinrobbinskr/" title="배스킨라빈스 페이스북"><img src="../01basic_data/header/icon_facebook.png" alt="페이스북 로고"></a></li>
           <li><a href="https://www.instagram.com/baskinrobbinskorea/?hl=ko" title="배스킨라빈스 인스타그램"><img src="../01basic_data/header/icon_instgram.png" alt="인스타그램 로고"></a></li>
         </ul>
-      </nav> -->
+      </nav>
 
       <!-- 오른쪽 위 lnb -->
       <nav class="h_right_lnb">
         <ul>
-          <li><input type="search" id="sh"><label for=sh><img src="../01basic_data/header/icon_search.png"></label></li>
+          <li><input type="search" id="sh" placeholder="검색어를 입력하세요"><label for=sh id="shlabel"><img src="../01basic_data/header/icon_search.png"></label></li>
           <li><a href="mypage.html" title="마이페이지"><i class="fas fa-user-circle"></i></a></li>
           <li><a href="customer" title="고객센터"><i class="fas fa-question-circle"></i></a></li>
         </ul>
@@ -72,9 +72,6 @@
         <ul>
           <li>
             <a href="fotm.html" title="이달의 맛">F.O.T.M</a>
-            <ul class="sub">
-              <li><img src="../01basic_data/main/img_monthly_fom_220831.png" alt=""></li>
-            </ul>
           </li>
 
           <li>
@@ -206,6 +203,17 @@
       </ul>
     </div>
 
+    <div class="flexslider pc_slide">
+      <ul class="slides">
+        <li>
+          <img src="../01basic_data/main/banner/pinkspoon.jpg" alt="핑크스푼"/>
+        </li>
+        <li>
+          <img src="../01basic_data/main/banner/Minionsnote.jpg" alt="미니언즈 노트" />
+        </li>
+      </ul>
+    </div>
+
     <article class="video_wrap">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/9wMI7wXvfGQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video"></iframe>
       <h2>그레이드맛 어워드</h2>
@@ -220,7 +228,7 @@
       <h2>BR MENU</h2>
       <a href="m_more.html" title="메뉴 더보기" class="more">더보기 <i class="fas fa-angle-right"></i></a>
 
-      <div class="swiper icecream"> <!-- mySwiper 부분은 바꿔도 상관 없음 -->
+      <div class="swiper icecream">
         <div class="swiper-wrapper">
     
           <div class="swiper-slide 이달의 맛">
@@ -389,7 +397,7 @@
       </div>
     </article>
 
-    <article>
+    <article class="card-wrap">
       <div class="fs_wrap">
         <div class="searchbar">
           <input type="search" placeholder="거주지 입력" id="fsbar">
@@ -453,7 +461,7 @@
   
 
 
-
+<script src="./script/pc.js"></script>
   <!-- flexslider script -->
 <script>
   // Can also be used with $(document).ready()
@@ -463,7 +471,12 @@
   });
 });
 
-var swiper = new Swiper(".icecream", {
+let windowSize = window.matchMedia("screen and (max-width:768px)");
+// 윈도우 사이즈 확인
+
+if(windowSize.matches) { //윈도우 사이즈가 768아래일 경우
+
+  var swiper = new Swiper(".icecream", {
         slidesPerView: "3.2",
         spaceBetween: 12,
         centeredSlides: true,
@@ -494,12 +507,51 @@ var swiper = new Swiper(".icecream", {
       },
     });
 
-    // 패밀리사이트 벨류 url로 바꾸기
-    function urlSite(url){
-            if(url!=''){
-                window.open(url,'_blanck') //self-현재창에 새로운 창을 덮어쓰기
-            }
-        }
+  }else{ //아니라면
+    // 아이스크림
+    var swiper = new Swiper(".icecream", {
+        slidesPerView: "4",
+        spaceBetween: 20,
+        centeredSlides: false,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: false,
+        },
+      });
+
+      //이벤트
+      var swiper = new Swiper(".event", {
+        slidesPerView: "4",
+        spaceBetween: 20,
+        centeredSlides: false,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: false,
+        },
+      });
+
+      // 인스타 스와이퍼
+      var swiper= new Swiper(".instafeed",{
+        slidesPerView: "4",
+        spaceBetween:20,
+        effect: "slide",/* fade 페이드아웃,페이드인효과*//*slide 슬라이드 이미지 변환*/
+        centeredSlides: false,
+        pagination: {
+        el: ".swiper-pagination",
+        clickable:true,
+      },
+    });
+  }
+
+
+
+
+  // 패밀리사이트 벨류 url로 바꾸기
+  function urlSite(url){
+    if(url!=''){
+      window.open(url,'_blanck') //self-현재창에 새로운 창을 덮어쓰기, _blanck 새탭열기
+    }
+  }
 </script>
 </body>
 </html>
